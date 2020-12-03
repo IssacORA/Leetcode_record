@@ -1,0 +1,91 @@
+>和705类似，705相当于设计set(),706相当于设计dict()
+    class node:
+        def __init__(self,val):
+            self.val=val
+            self.next=None
+    class bucket:
+        def __init__(self):
+            self.head=None
+
+        def to_put(self,key,val):
+            if not self.head:
+                self.head=node(val=[key,val])
+            else:
+                h0=self.head
+                h=self.head
+                while h:
+                    if h.val[0]==key:
+                        h.val[1]=val
+                        return
+                    else:
+                        h=h.next
+                self.head=node([key,val])
+                self.head.next=h0
+
+        def to_get(self,key):
+            if not self.head:
+                return -1
+            else:
+                h=self.head
+                while h:
+                    if h.val[0]==key:
+
+                        return h.val[1]
+                    else:
+                        h=h.next
+                return -1
+
+        def to_remove(self,key):
+            if not self.head:
+                return
+            elif self.head.val[0]==key:
+                self.head=self.head.next
+            else:
+                h=self.head
+                while h.next:
+                    if h.next.val[0]==key:
+                        h.next=h.next.next
+                        return
+                    else:
+                        h=h.next
+
+
+
+    class MyHashMap:
+    #牵扯到两个信息，一个是键，一个是与键对应的值，可以在桶中放列表，首元素为键，尾元素为值,桶的数据结构为单链表，val属性用一个列表
+        def __init__(self):
+            """
+            Initialize your data structure here.
+            """
+            self.HashValue=809
+            self.buckets=[bucket() for _ in range(self.HashValue)]
+
+        def choose_bucket(self,key):
+            return key%self.HashValue
+
+        def put(self, key: int, value: int) -> None: #插入键值对，如果已有键，更新值
+            """
+            value will always be non-negative.
+            """
+            self.buckets[MyHashMap.choose_bucket(self,key)].to_put(key,value)
+
+        def get(self, key: int) -> int: #输入键，返回值，没有键就返回-1
+            """
+            Returns the value to which the specified key is mapped, or -1 if this map contains no mapping for the key
+            """
+            return self.buckets[MyHashMap.choose_bucket(self,key)].to_get(key)
+
+
+        def remove(self, key: int) -> None:
+            """
+            Removes the mapping of the specified value key if this map contains a mapping for the key
+            """
+            self.buckets[MyHashMap.choose_bucket(self, key)].to_remove(key)
+
+
+
+    # Your MyHashMap object will be instantiated and called as such:
+    # obj = MyHashMap()
+    # obj.put(key,value)
+    # param_2 = obj.get(key)
+    # obj.remove(key)
