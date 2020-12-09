@@ -1,0 +1,70 @@
+    class Solution:
+
+        def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
+
+            if not strs:
+                return []
+            words={}
+            output=[]
+
+            count0=0 #永远比words.keys()的最大值还要大1
+            #拿到一个词i => 逐字母扫描得到集合temp => 如果temp是words中键k对应的值：把i插入到output
+            #的第k个list中 => 如果temp不是words中任何一个键对应的值：count0+=1
+            for i in strs:
+                temp={}
+                for j in i:
+                    if j not in temp:
+                        temp[j]=1
+                    else:
+                        temp[j]+=1
+                if not words:
+                    words[count0]=temp
+                    output.append([])
+                    output[0].append(i)
+                else:
+                    temp1=0
+                    for index in words.keys():
+                        if words[index]==temp:
+                            output[index].append(i)
+                            temp1=1
+                            break
+                    if not temp1:
+                        count0+=1
+                        words[count0]=temp
+                        output.append([])
+                        output[count0].append(i)
+
+            return output
+            
+>第一种方法用字典储存词汇组成信息，在输出中的下标：字典写成的词汇组成，每次输入一个新词，先转换为词汇组成，再到words中逐key判断值
+
+    class Solution:
+        def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
+            #一个词汇能生成一个字典表示的字母组成，这个字典就是分类标准
+            #但是字典是不可哈希类型，不能作为键存在，因此应该建立另一种一一对应
+            if not strs:
+                return []
+            output=[]
+            words=[]
+            for i in strs:
+                composition={}
+                for j in i:
+                    if j not in composition:
+                        composition[j]=1
+                    else:
+                        composition[j]+=1
+                if composition not in words:
+                    words.append(composition)
+                    output.append([])
+                    output[-1].append(i)
+                else:
+                    output[words.index(composition)].append(i)
+            return output
+           
+>第二种方法用数组储存字母组成信息，搜索到对应的组成信息后用index()返回下标，也就是其在output中的下标
+>两种方法都很慢而且内存占用大，第二种比第一种快得多
+
+
+
+
+
