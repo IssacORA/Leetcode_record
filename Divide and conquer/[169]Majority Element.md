@@ -3,7 +3,6 @@
 >The majority element is the element that appears more than ⌊n / 2⌋ times. You may assume that the majority element always exists in the array。
 
 `  
-
 class Solution:  
     def majorityElement(self, nums: List[int]) -> int:  
         count=0  
@@ -15,5 +14,4 @@ class Solution:
                 val,count = i,1
             else:
                 count-=1
-        return val
-        `
+        return val`
