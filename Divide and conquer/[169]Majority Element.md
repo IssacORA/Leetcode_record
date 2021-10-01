@@ -13,7 +13,9 @@
                 val,count = i,1
             else:
                 count-=1
-        return val```
+        return val
+```
+        
 ### sum(1 for elem in nums if elem == num)
 ### test
 > iterate over 遍历
