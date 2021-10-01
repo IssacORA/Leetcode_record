@@ -4,7 +4,7 @@
 
 
 
-`class Solution:
+`class Solution:  
     def majorityElement(self, nums: List[int]) -> int:
         count=0
         val = nums[0]
