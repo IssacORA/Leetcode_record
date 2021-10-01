@@ -16,8 +16,9 @@
         return val
 ```
         
-- sum(1 for elem in nums if elem == num)  
-    计数方式
-- counts = collections.Counter(nums)  
-    计数式字典
+- 计数方式  
+sum(1 for elem in nums if elem == num)   
+- 计数式字典  
+counts = collections.Counter(nums)  
+    
 > iterate over 遍历
