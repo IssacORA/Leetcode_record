@@ -18,6 +18,6 @@
         
 - sum(1 for elem in nums if elem == num)  
     计数方式
-- counts = collections.Counter(nums)
+- counts = collections.Counter(nums)  
     计数式字典
 > iterate over 遍历
