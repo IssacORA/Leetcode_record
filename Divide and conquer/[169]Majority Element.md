@@ -16,6 +16,7 @@
         return val
 ```
         
-### sum(1 for elem in nums if elem == num)
-### test
+##### sum(1 for elem in nums if elem == num) 
+> 计数方式
+
 > iterate over 遍历
