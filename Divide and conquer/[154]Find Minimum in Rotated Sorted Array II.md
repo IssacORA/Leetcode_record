@@ -8,7 +8,7 @@
 
 >You must decrease the overall operation steps as much as possible.
 
--My solution
+- My solution
 ```
 
   def findMin(nums: List[int]) -> int:
@@ -23,7 +23,7 @@
       return start
 ```
 
--divide and conquer
+- divide and conquer
 ```
     def findMin( nums):
         left, right = 0, len(nums) - 1
