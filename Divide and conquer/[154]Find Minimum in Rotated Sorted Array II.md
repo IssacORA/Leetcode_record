@@ -35,7 +35,7 @@
         return nums[left]
 
 ```
--- If R=L+1, (L+R)//2 is always L, so R is alwasy at right side. But L has chance to cross the cliff, 
--- because L is updated until it reaches the right side, that the while end condition.
--- That situation must be 'M > R' to trigger L update so it must be L=M & R=L+1.
--- It means that we can change the while end condition to 'while L!=R'
+- If R=L+1, (L+R)//2 is always L, so R is alwasy at right side. But L has chance to cross the cliff, 
+ because L is updated until it reaches the right side, that the while end condition.
+ That situation must be 'M > R' to trigger L update so it must be L=M & R=L+1.
+ It means that we can change the while end condition to 'while L!=R'
