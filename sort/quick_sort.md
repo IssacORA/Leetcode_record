@@ -23,6 +23,6 @@ class Solution(object):
         def quick_sort(low,high):
             if low < high:
                 mid = partion(low,high)
-                quick_sort(low,mid-1) __#1
+                quick_sort(low,mid-1) __#1__
                 quick_sort(mid+1,high)
 ```
