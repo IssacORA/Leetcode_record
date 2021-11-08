@@ -41,3 +41,9 @@ class Solution(object):
 - - 一是预构建堆的过程，将节点从数组的末尾遍历到开头
 - - - 为什么要自下而上执行？因为局部建堆时，只进行根部和较大的子节点的交换，然后只考虑交换后的树，另一侧必须保证其为最大堆
 - - 二是置换并修复的过程，最大堆的顶部总是堆中最大的元素，将此元素与倒序指针处的元素交换，再将其之前的元素修复为最大堆，如此反复
+We deal with this problem with maximium heap. In this thought, we consider array as a complete binary tree.  
+We fill each element of array in order in a binary tree from left to right and the ith element's left child is 
+the 2ith element.  
+Once we build a maximum heap, we build a slow pointer from the end of array to the start. Every steps it moves backwards, the element
+on it exchanges with the first element of array, then we get a sorted array.
+For this function, we need to modify the nums so it takes the heap. At one time we execute it, it modifies one root and clear its influence so it takes a root index. And if we want to consider partial array, we need a range l.
