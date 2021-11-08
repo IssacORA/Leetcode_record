@@ -49,3 +49,10 @@ sort_update的作用是，假设手头是两个已经排好序的升序数组，
 但如果相对大小的情况不均匀，会出现提前终止的情况，从而遗漏另一个数组中的元素。  
 这时就需要穷尽指针保证涉及所有元素。  
 由于跳出的条件是low<high，sort_update中的数组长度至少是2.
+
+We need two functions to deal with it. One for dividing the array half by half and one for sorting each pair at same place. 
+We can do these things simultaneously and recursively. 
+The merge_sort(low, high) takes two indexs and returns a sorted array.
+Every time it splits the array and leaves a task to deal with then complete the task from bottom of structure.
+Once one task is completed, we should trust it DOES sort part of array.  
+The recursive function: two neighboring ascending array --> one ascending array
