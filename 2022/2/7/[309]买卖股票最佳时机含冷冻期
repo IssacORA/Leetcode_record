@@ -1,0 +1,39 @@
+>炒股
+>卖完第二天不能买
+    
+    
+    
+    
+ My wrong solution:
+ 
+ ```
+    def maxProfit(self, prices: List[int]) -> int:
+        buy,sell = -float('inf'),0
+        #卖出后无法在第二天买入，因此需要确认“什么时候一定会卖出”
+        # buy+p>sell =>一定会卖
+        cant_buy=0
+        for p in prices:
+            if cant_buy==1:
+                #如果今天不能买，说明昨天卖了，那今天也不能卖，直接跳过一天
+                cant_buy=0
+                sell = max(sell, buy+p)
+            else:
+                buy = max(buy, sell-p)
+                if buy+p>sell:
+                    cant_buy=1
+                sell = max(sell, buy+p)
+        return sell
+```
+
+
+Solution:
+卖完第二天一定不能买，反过来说，买的时候一定只能参考前一天的sell信息，而右侧是昨天的sell，
+这个sell记录为sell_pre会用在明天的buy右侧
+```
+    def maxProfit(self, prices: List[int]) -> int:
+        buy,sell,sell_pre = -float('inf'),0,0
+        for p in prices:
+            buy = max(buy,sell_pre-p)
+            sell_pre,sell = sell, max(sell,buy+p)
+        return sell
+```
