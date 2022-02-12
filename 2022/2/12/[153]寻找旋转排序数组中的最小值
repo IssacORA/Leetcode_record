@@ -1,0 +1,25 @@
+>nums旋转排序过，求最小值
+
+keywords: 最小值，顺序递增
+labels: binary sort
+
+My solution: binary sort
+分情况讨论，只有head>tail的情况下才需要寻找
+是要寻找中间偏右的那个点，在mid取到该点的时候一定不能越过去，所以right的更新有保留
+```
+  def findMin(self, nums: List[int]) -> int:
+        l = len(nums)
+        head,tail = nums[0],nums[-1]
+        left, right = 0, l-1
+
+        if head < tail: # case one: totally increase
+            return head
+
+        while left<right: # case two: cut in half
+            mid = (left+right)//2
+            if nums[mid] >= head:
+                left = mid + 1
+            elif nums[mid] <= tail:
+                right = mid
+        return nums[left]
+```
